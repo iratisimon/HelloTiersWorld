@@ -10,5 +10,45 @@ package model;
  * @author 2dam
  */
 public class User {
+    private String DNI;
+    private String NameU;
+    private String Surname;
+    private String Passwd;
+
+    public User() {
+    }
+
+    public String getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+
+    public String getNameU() {
+        return NameU;
+    }
+
+    public void setNameU(String NameU) {
+        this.NameU = NameU;
+    }
+
+    public String getSurname() {
+        return Surname;
+    }
+
+    public void setSurname(String Surname) {
+        this.Surname = Surname;
+    }
+
+    public String getPasswd() {
+        return Passwd;
+    }
+
+    public void setPasswd(String Passwd) {
+        this.Passwd = Passwd;
+    }
+
     
 }

@@ -5,10 +5,12 @@
  */
 package dataAccessTier;
 
+import model.User;
+
 /**
  *
  * @author 2dam
  */
 public interface DataAccesible {
-    public void getUserData();
+    public User getUserData();
 }
