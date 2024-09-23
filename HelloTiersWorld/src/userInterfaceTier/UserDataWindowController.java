@@ -14,8 +14,9 @@ import javafx.scene.control.TextField;
 import model.User;
 
 /**
+ * Controller class for managing user data display in the user interface.
  *
- * @author 2dam
+ * @author Irati and Elbire
  */
 public class UserDataWindowController {
 
@@ -31,6 +32,11 @@ public class UserDataWindowController {
     @FXML
     private TextField passwd;
 
+    /**
+     * Handles the button action to retrieve and display user data.
+     *
+     * @throws Exception if there is an error retrieving user data
+     */
     @FXML
     private void handleButtonAction() {
 

@@ -16,18 +16,24 @@ import javafx.scene.control.ButtonType;
 import model.User;
 
 /**
+ * Data Access Object class to manage user data access.
  *
- * @author 2dam
+ * @author Irati and Elbire
  */
 public class DBUserDataAccessor implements DataAccesible {
 
     /**
-     * Abre una conexion con la base de datos.
+     * SQL query to retrieve all user data from the database.
      */
     private static final String GETUSERDATA = "SELECT * FROM user";
 
+    /**
+     * Opens a connection to the database.
+     *
+     * @return the database connection
+     */
     public Connection openConnection() {
-        // TODO Auto-generated method stub
+
         Connection con = null;
 
         try {
@@ -43,11 +49,11 @@ public class DBUserDataAccessor implements DataAccesible {
     }
 
     /**
-     * Cierra la conexion con la base de datos.
+     * Closes the connection to the database.
      *
-     * @param stmt
-     * @param con
-     * @throws SQLException si ocurre un error al cerrar la conexión
+     * @param stmt the PreparedStatement object to be closed
+     * @param con the Connection object to be closed
+     * @throws SQLException if an error occurs while closing the connection
      */
     public void closeConnection(PreparedStatement stmt, Connection con) throws SQLException {
 
@@ -59,6 +65,11 @@ public class DBUserDataAccessor implements DataAccesible {
         }
     }
 
+    /**
+     * Retrieves user data from the database.
+     *
+     * @return a User object containing user data, or null if no data is found
+     */
     @Override
     public User getUserData() {
         Connection con = null;
@@ -66,16 +77,16 @@ public class DBUserDataAccessor implements DataAccesible {
         User user = null;
 
         try {
-            // Abre la conexión
+            // Opens the connection
             con = openConnection();
 
-            // Prepara la sentencia SQL
+            // Prepares the SQL statement
             stmt = con.prepareStatement(GETUSERDATA);
 
-            // Ejecuta la consulta
+            // Executes the query
             ResultSet rs = stmt.executeQuery();
 
-            // Si hay resultados, crea una instancia de User con los datos
+            // If results are found, creates a User instance with the data
             if (rs.next()) {
                 user = new User();
                 user.setDNI(rs.getString("DNI"));

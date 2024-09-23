@@ -9,13 +9,22 @@ import java.util.ResourceBundle;
 import model.User;
 
 /**
+ * Class for accessing user data from a properties file using ResourceBundle.
  *
- * @author 2dam
+ * @author Irati and Elbire
  */
 public class FileUserDataAccessor implements DataAccesible {
 
+    /**
+     * The name of the properties file containing user data.
+     */
     private static final String USERDATA = "dataAccessTier.user";
 
+    /**
+     * Retrieves user data from the properties file.
+     *
+     * @return a User object containing the user data from the file
+     */
     @Override
     public User getUserData() {
         ResourceBundle resourceBundle = ResourceBundle.getBundle(USERDATA);

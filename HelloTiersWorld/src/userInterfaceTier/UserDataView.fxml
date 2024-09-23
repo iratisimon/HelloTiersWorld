@@ -4,17 +4,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<!--
+    This FXML file defines the layout for the User Data Window.
+    It includes labels and text fields for displaying user information,
+    as well as a button to trigger an action to show the user data.
+    
+    Controller: userInterfaceTier.UserDataWindowController
+-->
 <AnchorPane id="AnchorPane" prefHeight="240.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterfaceTier.UserDataWindowController">
     <children>
         <Button fx:id="button" layoutX="185.0" layoutY="192.0" onAction="#handleButtonAction" text="Show User" />
         <Label fx:id="label" layoutX="40.0" layoutY="32.0" minHeight="16" minWidth="69" text="First name:" />
-      <Label fx:id="label1" layoutX="40.0" layoutY="71.0" minHeight="16" minWidth="69" text="Last name:" />
-      <Label fx:id="label2" layoutX="40.0" layoutY="111.0" minHeight="16" minWidth="69" text="DNI:" />
-      <Label fx:id="label3" layoutX="40.0" layoutY="153.0" minHeight="16" minWidth="69" text="Password:" />
-      <TextField fx:id="nameU" editable="false" layoutX="122.0" layoutY="28.0" prefHeight="26.0" prefWidth="198.0" />
-      <TextField fx:id="surname" editable="false" layoutX="122.0" layoutY="67.0" prefHeight="26.0" prefWidth="198.0" />
-      <TextField fx:id="dni" editable="false" layoutX="122.0" layoutY="107.0" prefHeight="26.0" prefWidth="198.0" />
-      <TextField fx:id="passwd" editable="false" layoutX="122.0" layoutY="148.0" prefHeight="26.0" prefWidth="198.0" />
+        <Label fx:id="label1" layoutX="40.0" layoutY="71.0" minHeight="16" minWidth="69" text="Last name:" />
+        <Label fx:id="label2" layoutX="40.0" layoutY="111.0" minHeight="16" minWidth="69" text="DNI:" />
+        <Label fx:id="label3" layoutX="40.0" layoutY="153.0" minHeight="16" minWidth="69" text="Password:" />
+        <TextField fx:id="nameU" editable="false" layoutX="122.0" layoutY="28.0" prefHeight="26.0" prefWidth="198.0" />
+        <TextField fx:id="surname" editable="false" layoutX="122.0" layoutY="67.0" prefHeight="26.0" prefWidth="198.0" />
+        <TextField fx:id="dni" editable="false" layoutX="122.0" layoutY="107.0" prefHeight="26.0" prefWidth="198.0" />
+        <TextField fx:id="passwd" editable="false" layoutX="122.0" layoutY="148.0" prefHeight="26.0" prefWidth="198.0" />
     </children>
 </AnchorPane>

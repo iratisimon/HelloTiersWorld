@@ -8,10 +8,18 @@ package dataAccessTier;
 import model.User;
 
 /**
- *
- * @author 2dam
+ * Interface for accessing user data from the data source.
+ * 
+ * @author Irati and Elbire
  */
 public interface DataAccesible {
+    
+    /**
+     * Retrieves user data from the data source.
+     * 
+     * @return a User object containing user data
+     * @throws Exception if an error occurs while retrieving the data
+     */
 
     public User getUserData() throws Exception;
 }
