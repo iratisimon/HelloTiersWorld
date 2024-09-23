@@ -12,15 +12,13 @@ import userInterfaceTier.Application;
  *
  * @author 2dam
  */
-public class UserManagerFactory extends Application{
-    //private static final String GETDATAACCESS = "properties";
-    private static final String GETDATAACCESS = ResourceBundle.getBundle("properties").getString("DATA_BASE");
+public class UserManagerFactory extends Application {
 
-    public DataAccesible getData(){
-        //ResourceBundle resourceBundle = ResourceBundle.getBundle(GETDATAACCESS);
-        //String datasource = resourceBundle.getString("DATA_BASE");
-        
-        if (GETDATAACCESS.equalsIgnoreCase("true")){
+    private static final String GETDATAACCESS = ResourceBundle.getBundle("dataAccessTier.properties").getString("DATA_BASE");
+
+    public static DataAccesible getData() {
+
+        if (GETDATAACCESS.equalsIgnoreCase("true")) {
             return new DBUserDataAccessor();
         } else {
             return new FileUserDataAccessor();

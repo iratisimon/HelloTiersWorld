@@ -10,6 +10,7 @@ package model;
  * @author 2dam
  */
 public class User {
+
     private String DNI;
     private String NameU;
     private String Surname;
@@ -50,5 +51,4 @@ public class User {
         this.Passwd = Passwd;
     }
 
-    
 }

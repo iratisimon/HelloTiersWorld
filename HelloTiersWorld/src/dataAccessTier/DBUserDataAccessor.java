@@ -10,6 +10,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import model.User;
 
 /**
@@ -26,11 +29,15 @@ public class DBUserDataAccessor implements DataAccesible {
     public Connection openConnection() {
         // TODO Auto-generated method stub
         Connection con = null;
+
         try {
-            String url = "jdbc:mysql://localhost:3306/hellotiersworld?serverTimezone=Europe/Madrid&useSSL=false";
+            String url = "jdbc:mysql://localhost:3306/hellotiersworld?zeroDateTimeBehavior=convertToNull";
             con = DriverManager.getConnection(url, "root", "abcd*1234");
         } catch (SQLException e) {
-            System.out.println("Error al intentar abrir la BD");
+            Logger.getLogger("dataAccessTier").severe(e.getLocalizedMessage());
+
+            new Alert(Alert.AlertType.ERROR, "No se ha podido abrir la base de datos.", ButtonType.OK).showAndWait();
+
         }
         return con;
     }
@@ -38,17 +45,18 @@ public class DBUserDataAccessor implements DataAccesible {
     /**
      * Cierra la conexion con la base de datos.
      *
+     * @param stmt
+     * @param con
      * @throws SQLException si ocurre un error al cerrar la conexión
      */
     public void closeConnection(PreparedStatement stmt, Connection con) throws SQLException {
-        System.out.println("Conexion cerrada");
+
         if (stmt != null) {
             stmt.close();
         }
         if (con != null) {
             con.close();
         }
-        System.out.println("--------------------");
     }
 
     @Override
@@ -77,12 +85,18 @@ public class DBUserDataAccessor implements DataAccesible {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al obtener los datos del usuario: " + e.getMessage());
+            Logger.getLogger("dataAccessTier").severe(e.getLocalizedMessage());
+
+            new Alert(Alert.AlertType.ERROR, "Error al obtener los datos del usuario: ", ButtonType.OK).showAndWait();
+
         } finally {
             try {
                 closeConnection(stmt, con);
             } catch (SQLException e) {
-                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+                Logger.getLogger("dataAccessTier").severe(e.getLocalizedMessage());
+
+                new Alert(Alert.AlertType.ERROR, "Error al cerrar la conexión: ", ButtonType.OK).showAndWait();
+
             }
         }
         return user;

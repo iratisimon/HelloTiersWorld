@@ -12,5 +12,6 @@ import model.User;
  * @author 2dam
  */
 public interface DataAccesible {
-    public User getUserData();
+
+    public User getUserData() throws Exception;
 }

@@ -5,12 +5,7 @@
  */
 package dataAccessTier;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ResourceBundle;
 import model.User;
 
 /**
@@ -19,24 +14,17 @@ import model.User;
  */
 public class FileUserDataAccessor implements DataAccesible {
 
-    private static final String USERDATA = "user.properties";
+    private static final String USERDATA = "dataAccessTier.user";
 
     @Override
     public User getUserData() {
-        Properties properties = new Properties();
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(USERDATA);
         User user = new User();
 
-        try (FileInputStream input = new FileInputStream(USERDATA)) {
-            properties.load(input);
-            user.setDNI(properties.getProperty("DNI"));
-            user.setNameU(properties.getProperty("NameU"));
-            user.setPasswd(properties.getProperty("Passwd"));
-            user.setSurname(properties.getProperty("Surname"));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FileUserDataAccessor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(FileUserDataAccessor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        user.setDNI(resourceBundle.getString("DNI"));
+        user.setNameU(resourceBundle.getString("NameU"));
+        user.setPasswd(resourceBundle.getString("Passwd"));
+        user.setSurname(resourceBundle.getString("Surname"));
 
         return user;
     }

@@ -5,31 +5,50 @@
  */
 package userInterfaceTier;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import dataAccessTier.UserManagerFactory;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import model.User;
 
 /**
  *
  * @author 2dam
  */
-public class UserDataWindowController implements Initializable {
-    
+public class UserDataWindowController {
+
     @FXML
-    private Label label;
-    
+    private TextField nameU;
+
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private TextField surname;
+
+    @FXML
+    private TextField dni;
+
+    @FXML
+    private TextField passwd;
+
+    @FXML
+    private void handleButtonAction() {
+
+        try {
+            User user = UserManagerFactory.getData().getUserData();
+            nameU.setId("nameU");
+            nameU.setPromptText(user.getNameU());
+            surname.setId("surname");
+            surname.setPromptText(user.getSurname());
+            dni.setId("dni");
+            dni.setPromptText(user.getDNI());
+            passwd.setId("passwd");
+            passwd.setPromptText(user.getPasswd());
+        } catch (Exception e) {
+            Logger.getLogger("userInterfaceTier").severe(e.getLocalizedMessage());
+
+            new Alert(Alert.AlertType.ERROR, "No se ha podido obtener los datos del usuario.", ButtonType.OK).showAndWait();
+        }
     }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+
 }
