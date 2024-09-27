@@ -43,13 +43,13 @@ public class UserDataWindowController {
         try {
             User user = UserManagerFactory.getData().getUserData();
             nameU.setId("nameU");
-            nameU.setPromptText(user.getNameU());
+            nameU.setText(user.getNameU());
             surname.setId("surname");
-            surname.setPromptText(user.getSurname());
+            surname.setText(user.getSurname());
             dni.setId("dni");
-            dni.setPromptText(user.getDNI());
+            dni.setText(user.getDNI());
             passwd.setId("passwd");
-            passwd.setPromptText(user.getPasswd());
+            passwd.setText(user.getPasswd());
         } catch (Exception e) {
             Logger.getLogger("userInterfaceTier").severe(e.getLocalizedMessage());
 
