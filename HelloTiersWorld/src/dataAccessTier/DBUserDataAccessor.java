@@ -37,7 +37,7 @@ public class DBUserDataAccessor implements DataAccesible {
         Connection con = null;
 
         try {
-            String url = "jdbc:mysql://localhost:3306/hellotiersworld?zeroDateTimeBehavior=convertToNull";
+            String url = "jdbc:mysql://localhost:3306/hellotiersworld1?zeroDateTimeBehavior=convertToNull";
             con = DriverManager.getConnection(url, "root", "abcd*1234");
         } catch (SQLException e) {
             Logger.getLogger("dataAccessTier").severe(e.getLocalizedMessage());
